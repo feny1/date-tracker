@@ -1,0 +1,336 @@
+<!-- 
+    ||||||||  ||||||||  ||   ||  ||    ||
+    ||        ||        ||\  ||   \\  // 
+    ||||||    ||||||    ||\\ ||    \\//
+    ||        ||        || \\||     || 
+    ||        ||        ||  \||     ||
+    ||        ||||||||  ||   ||     ||
+
+    Ehab Yar
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="../images/Logo.png">
+    <title>Date Tracker</title>
+    <style>
+        :root {
+            --primary-background: rgb(241, 241, 241);
+            --second-background: rgb(27, 0, 0);
+            --text: #b10000;
+            --second-text: #130000;
+            --text-hover: #af2c2c;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--primary-background);
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--text);
+            color: var(--primary-background);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: var(--text-hover);
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .result,
+        .remaining {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text);
+        }
+
+        .footer {
+            background-color: white;
+            color: var(--second-background);
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 0.5em;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon {
+            color: var(--second-background);
+            transition: color 0.3s ease;
+        }
+
+        .icon:hover {
+            color: var(--text-hover);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Date Tracker</h1>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate">
+        <button onclick="setDefaultStartDate()">Set Default Start Date</button>
+        <button onclick="setTodayStart()">Set Today as Start Date</button>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate">
+        <button onclick="setDefaultEndDate()">Set Default End Date</button>
+        <button onclick="setTodayEnd()">Set Today as End Date</button>
+
+        <label for="resultFormat">Select Total Format:</label>
+        <select id="resultFormat" onchange="updateResult()">
+            <option value="weeks">Weeks</option>
+            <option value="months">Months</option>
+            <option value="years">Years</option>
+            <option value="days">Days</option>
+            <option value="daysWeeks">Days/Weeks</option>
+            <option value="daysMonths">Days/Months</option>
+            <option value="daysYears">Days/Years</option>
+            <option value="daysMonthsYears">Days/Months/Years</option>
+        </select>
+
+        <div class="result" id="result"></div>
+        <div class="remaining" id="remaining">Time Remaining:</div>
+
+        <footer class="footer">
+            <a href="/" style="text-decoration-line: none;">
+                <p class="footer-title">&copy; <span>Feny</span></p>
+            </a>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/ehab-yar-4a1bb4193/" aria-label="LinkedIn" class="icon"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/_f_eny" aria-label="Twitter" class="icon"><i
+                        class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://instagram.com/_f_eny" aria-label="Instagram" class="icon"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://github.com/feny1" aria-label="GitHub" class="icon"><i
+                        class="fa-brands fa-github"></i></a>
+                
+            </div>
+            <a href="./doc/" aria-label="Documentation" class="icon"><i
+                class="fa-solid fa-book"></i>&nbsp;&nbsp;&nbsp;Documentation</a>
+        </footer>
+    </div>
+
+    <script>
+        const defaultStartDate = '2024-08-18';
+        const defaultEndDate = '2024-11-17';
+        let totalDays;
+        let countdownInterval;
+
+        window.onload = function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const startDateParam = urlParams.get('start');
+            const endDateParam = urlParams.get('end');
+            const format = urlParams.get('format');
+
+            const startDate = startDateParam ? formatDate(startDateParam) : 0;
+            const endDate = endDateParam ? formatDate(endDateParam) : 0;
+            document.getElementById('resultFormat').value = format ? format : "weeks";
+
+
+            document.getElementById('startDate').value = startDate;
+            document.getElementById('endDate').value = endDate;
+
+            calculateWeek(startDate, endDate);
+        };
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toISOString().split('T')[0];
+        }
+
+        let startDate;
+        let endDate;
+        function calculateWeek(startDateInput, endDateInput) {
+            const resultDiv = document.getElementById('result');
+            const remainingDiv = document.getElementById('remaining');
+
+            startDate = new Date(startDateInput);
+            endDate = new Date(endDateInput);
+            const currentDate = new Date();
+
+            
+
+            const diffTime = Math.abs(endDate - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            totalDays = Math.ceil(((new Date()) - startDate) / (1000 * 60 * 60 * 24));
+            updateRemainingTime(endDate);
+            updateResult();
+        }
+
+        function updateResult() {
+            const resultDiv = document.getElementById('result');
+            const format = document.getElementById('resultFormat').value;
+            
+
+
+            switch (format) {
+                case 'weeks':
+                    resultDiv.textContent = `Total: ${Math.ceil(totalDays / 7)} weeks`;
+                    break;
+                case 'months':
+                    resultDiv.textContent = `Total: ${Math.floor(totalDays / 30)} months`;
+                    break;
+                case 'years':
+                    resultDiv.textContent = `Total: ${Math.floor(totalDays / 365)} years`;
+                    break;
+                case 'days':
+                    resultDiv.textContent = `Total: ${totalDays} days`;
+                    break;
+                case 'daysWeeks':
+                    resultDiv.textContent = `Total:\n${Math.floor(totalDays / 7)} weeks : ${totalDays % 7} days`;
+                    break;
+                case 'daysMonths':
+                    resultDiv.textContent = `Total:\n${Math.floor(totalDays / 30)} months : ${totalDays % 30} days`;
+                    break;
+                case 'daysYears':
+                    resultDiv.textContent = `Total:\n${Math.floor(totalDays / 365)} years : ${totalDays % 365} days`;
+                    break;
+                case 'daysMonthsYears':
+                    resultDiv.textContent = `Total:\n${Math.floor(totalDays / 365)} years : ${Math.floor(Math.floor(totalDays % 365) / 30)} months : ${totalDays - (Math.floor(totalDays / 30) * 30)} days`;
+                    break;
+                default:
+                    resultDiv.textContent = 'Select a valid format';
+            }
+            
+            if (isNaN(startDate) || startDateInput === '') {
+                resultDiv.textContent = '';
+                return;
+            }
+        }
+
+        function updateRemainingTime(endDate) {
+            const remainingDiv = document.getElementById('remaining');
+           
+
+            const currentDate = new Date();
+            if (endDate <= currentDate) {
+                remainingDiv.textContent = 'Time is up!';
+                clearInterval(countdownInterval);
+                return;
+            }
+
+            countdownInterval = setInterval(() => {
+                const currentDate = new Date();
+                const remainingTime = endDate - currentDate;
+
+                if (remainingTime <= 0) {
+                    clearInterval(countdownInterval);
+                    remainingDiv.textContent = 'Time is up!';
+                    return;
+                }
+
+                const remainingSeconds = Math.floor((remainingTime / 1000) % 60);
+                const remainingMinutes = Math.floor((remainingTime / 1000 / 60) % 60);
+                const remainingHours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+                const remainingDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+
+                remainingDiv.innerHTML = `Time Remaining:<br>${remainingDays} days, ${remainingHours.toString().padStart(2, '0')}:${remainingMinutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        document.getElementById('startDate').addEventListener('change', function () {
+            calculateWeek(this.value, document.getElementById('endDate').value);
+        });
+
+        document.getElementById('endDate').addEventListener('change', function () {
+            calculateWeek(document.getElementById('startDate').value, this.value);
+        });
+
+        function setDefaultStartDate() {
+            document.getElementById('startDate').value = defaultStartDate;
+            calculateWeek(defaultStartDate, document.getElementById('endDate').value);
+        }
+
+        function setTodayStart() {
+            const today = new Date();
+            const formattedToday = today.toISOString().split('T')[0];
+            document.getElementById('startDate').value = formattedToday;
+            calculateWeek(formattedToday, document.getElementById('endDate').value);
+        }
+
+        function setDefaultEndDate() {
+            document.getElementById('endDate').value = defaultEndDate;
+            calculateWeek(document.getElementById('startDate').value, defaultEndDate);
+        }
+
+        function setTodayEnd() {
+            const today = new Date();
+            const formattedToday = today.toISOString().split('T')[0];
+            document.getElementById('endDate').value = formattedToday;
+            calculateWeek(document.getElementById('startDate').value, formattedToday);
+        }
+    </script>
+
+</body>
+
+</html>
