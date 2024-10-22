@@ -20,32 +20,32 @@ The Date Tracker is a web application that allows users to calculate the time di
 </p>
 
 ## Usage
+### Setting Dates
+1. **Set the Start Date**: Use the date input field to select your start date.
+2. **Set the End Date**: Use the date input field to select your end date.
+3. **Quick Set Buttons**:
+   - **Set Default Start Date**: Resets the start date to August 18, 2024.
+   - **Set Today as Start Date**: Sets the start date to the current date.
+   - **Set Default End Date**: Resets the end date to November 17, 2024.
+   - **Set Today as End Date**: Sets the end date to the current date.
 
-### Setting Dates 📅
-Users can set the start and end dates using the date input fields. There are also buttons to quickly set the default dates or today's date:
-- **Set Default Start Date**: Resets the start date to August 18, 2024.
-- **Set Today as Start Date**: Sets the start date to the current date.
-- **Set Default End Date**: Resets the end date to November 17, 2024.
-- **Set Today as End Date**: Sets the end date to the current date.
-
-### Selecting Result Format 🔍
-Users can choose how they want the difference between the two dates to be displayed using the dropdown menu. The options include:
-- 🗓️ Weeks
-- 📆 Months
+### Selecting Result Format
+Choose how you want the difference between the two dates to be displayed using the dropdown menu. The options include:
+- 📅 Weeks
+- 📅 Months
 - 📅 Years
-- ⏳ Days
-- 🔄 Days/Weeks
-- 📊 Days/Months
-- 📈 Days/Years
-- 📊 Days/Months/Years
+- 📅 Days
+- 📅 Days/Weeks
+- 📅 Days/Months
+- 📅 Days/Years
+- 📅 Days/Months/Years
 
-### Calculating Time Remaining ⏰
+### Calculating Time Remaining
 The application continuously updates to show how much time remains until the end date. If the end date has passed, it will display "Time is up!"
 
-## URL Query Parameters 🌐
+## URL Query Parameters
 The Date Tracker supports the following URL query parameters for pre-setting the start and end dates, as well as the result format:
 
-Where:
 - `start`: The start date in `YYYY-MM-DD` format.
 - `end`: The end date in `YYYY-MM-DD` format.
 - `format`: The desired result format (`weeks`, `months`, `years`, `days`, `daysWeeks`, `daysMonths`, `daysYears`, `daysMonthsYears`).
