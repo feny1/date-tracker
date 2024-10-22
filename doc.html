@@ -1,0 +1,137 @@
+<!-- 
+    ||||||||  ||||||||  ||   ||  ||    ||
+    ||        ||        ||\  ||   \\  // 
+    ||||||    ||||||    ||\\ ||    \\//
+    ||        ||        || \\||     || 
+    ||        ||        ||  \||     ||
+    ||        ||||||||  ||   ||     ||
+
+    Ehab Yar
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Tracker Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+            margin: auto;
+            padding: 20px;
+            line-height: 1.6;
+            width: 80%;
+        }
+
+        h1, h2, h3 {
+            color: #b10000;
+        }
+
+        pre {
+            background: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+
+        .code {
+            display: inline-block;
+            background: #e7e7e7;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .icon {
+            color: #b10000;
+            transition: color 0.3s ease;
+        }
+
+        .icon:hover {
+            color: #af2c2c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Date Tracker Documentation</h1>
+
+    <h2>Overview</h2>
+    <p>The Date Tracker is a web application that allows users to calculate the time difference between two dates. Users can set a start and end date, choose a format for the result, and view the time remaining until the end date.</p>
+
+    <h2>Usage</h2>
+    <h3>Setting Dates</h3>
+    <p>Users can set the start and end dates using the date input fields. There are also buttons to quickly set the default dates or today's date:</p>
+    <ul>
+        <li><strong>Set Default Start Date</strong>: Resets the start date to August 18, 2024.</li>
+        <li><strong>Set Today as Start Date</strong>: Sets the start date to the current date.</li>
+        <li><strong>Set Default End Date</strong>: Resets the end date to November 17, 2024.</li>
+        <li><strong>Set Today as End Date</strong>: Sets the end date to the current date.</li>
+    </ul>
+
+    <h3>Selecting Result Format</h3>
+    <p>Users can choose how they want the difference between the two dates to be displayed using the dropdown menu. The options include:</p>
+    <ul>
+        <li>Weeks</li>
+        <li>Months</li>
+        <li>Years</li>
+        <li>Days</li>
+        <li>Days/Weeks</li>
+        <li>Days/Months</li>
+        <li>Days/Years</li>
+        <li>Days/Months/Years</li>
+    </ul>
+
+    <h3>Calculating Time Remaining</h3>
+    <p>The application continuously updates to show how much time remains until the end date. If the end date has passed, it will display "Time is up!"</p>
+
+    <h2>URL Query Parameters</h2>
+    <p>The Date Tracker supports the following URL query parameters for pre-setting the start and end dates, as well as the result format:</p>
+    <pre><code class="code">?start=YYYY-MM-DD&end=YYYY-MM-DD&format=value</code></pre>
+    <p>Where:</p>
+    <ul>
+        <li><code>start</code>: The start date in <code>YYYY-MM-DD</code> format.</li>
+        <li><code>end</code>: The end date in <code>YYYY-MM-DD</code> format.</li>
+        <li><code>format</code>: The desired result format ( <code>weeks</code>, <code>months</code>, <code>years</code>, <code>days</code>, <code>daysWeeks</code>, <code>daysMonths</code>, <code>daysYears</code>, <code>daysMonthsYears</code>.).</li>
+    </ul>
+
+    <h3>Example Usage</h3>
+    <p>To set the start date as January 1, 2024, the end date as December 31, 2024, and display the result in months, your URL would look like this:</p>
+    <pre><code class="code"><a href="/tools/date-tracker?start=2024-01-01&end=2024-12-31&format=months">https://eny.sa/tools/date-tracker?start=2024-01-01&end=2024-12-31&format=months</a></code></pre>
+    <p>To set the start date as January 3, 2020, and display the result in days / months / years, your URL would look like this:</p>
+    <pre><code class="code"><a href="/tools/date-tracker?start=2020-01-03&format=daysMonthsYears">https://eny.sa/tools/date-tracker?start=2020-01-03&format=daysMonthsYears</a></code></pre>
+
+    <footer>
+        <p>&copy; <span>Feny</span></p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/ehab-yar-4a1bb4193/" aria-label="LinkedIn" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://twitter.com/_f_eny" aria-label="Twitter" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://instagram.com/_f_eny" aria-label="Instagram" class="icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/feny1" aria-label="GitHub" class="icon"><i class="fa-brands fa-github"></i></a>
+        </div>
+    </footer>
+    
+</body>
+
+</html>
