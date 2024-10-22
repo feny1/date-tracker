@@ -1,4 +1,4 @@
-# Date Tracker Documentation Index
+# Date Tracker
 
 1. [Overview](#overview)
 2. [Usage](#usage)
