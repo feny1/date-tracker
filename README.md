@@ -1,4 +1,16 @@
-# Date Tracker Documentation
+# Date Tracker Documentation Index
+
+1. [Overview](#overview)
+2. [Usage](#usage)
+   - [Setting Dates](#setting-dates)
+   - [Selecting Result Format](#selecting-result-format)
+   - [Calculating Time Remaining](#calculating-time-remaining)
+3. [URL Query Parameters](#url-query-parameters)
+   - [Example Usage](#example-usage)
+4. [Author](#author)
+5. [Social Links](#social-links)
+
+---
 
 ## Overview
 The Date Tracker is a web application that allows users to calculate the time difference between two dates. Users can set a start and end date, choose a format for the result, and view the time remaining until the end date.
@@ -6,7 +18,6 @@ The Date Tracker is a web application that allows users to calculate the time di
 <p align="center">
 <img src="https://github.com/feny1/date-tracker/blob/main/screenshot.png?raw=true" width="300" height="500" border="10"/>
 </p>
-
 
 ## Usage
 
