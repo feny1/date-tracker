@@ -13,7 +13,7 @@
 
 ---
 
-## What is Date Tracker? 🗓️
+## What is Date Tracker? 📅
 Date Tracker is a simple web app that helps you find out how much time is left between two dates. You can set a start date and an end date, choose how you want to see the results, and see the countdown!
 
 <p align="center">
