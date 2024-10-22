@@ -1,15 +1,15 @@
 # Date Tracker 🚀
 
 ## Table of Contents
-1. [What is Date Tracker?](#what-is-date-tracker) 🗓️
-2. [How to Use It](#how-to-use-it) 🛠️
-   - [Setting Dates](#setting-dates) 📅
-   - [Choosing the Result Format](#choosing-the-result-format) 🔄
-   - [Checking Time Remaining](#checking-time-remaining) ⏳
-3. [Using URL Parameters](#using-url-parameters) 🌐
-   - [Example Links](#example-links) 🔗
-4. [About the Author](#about-the-author) 👤
-5. [Connect with Me](#connect-with-me) 📱
+1. [What is Date Tracker?](#what-is-date-tracker-) 🗓️
+2. [How to Use It](#how-to-use-it-) 🛠️
+   - [Setting Dates](#setting-dates-) 📅
+   - [Choosing the Result Format](#choosing-the-result-format-) 🔄
+   - [Checking Time Remaining](#checking-time-remaining-) ⏳
+3. [Using URL Parameters](#using-url-parameters-) 🌐
+   - [Example Links](#example-links-) 🔗
+4. [About the Author](#about-the-author-) 👤
+5. [Connect with Me](#connect-with-me-) 📱
 
 ---
 
