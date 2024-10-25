@@ -3,7 +3,7 @@
 ## Table of Contents
 1. [What is Date Tracker?](#what-is-date-tracker-) 🗓️
 2. [How to Use It](#how-to-use-it-) 🛠️
-   - [Installation](#Installation) 📅
+   - [Installation](#Installation) 
    - [Setting Dates](#setting-dates-) 📅
    - [Choosing the Result Format](#choosing-the-result-format-) 🔄
    - [Checking Time Remaining](#checking-time-remaining-) ⏳
