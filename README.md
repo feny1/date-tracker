@@ -3,6 +3,7 @@
 ## Table of Contents
 1. [What is Date Tracker?](#what-is-date-tracker-) 🗓️
 2. [How to Use It](#how-to-use-it-) 🛠️
+   - [Installation](#Installation) 📅
    - [Setting Dates](#setting-dates-) 📅
    - [Choosing the Result Format](#choosing-the-result-format-) 🔄
    - [Checking Time Remaining](#checking-time-remaining-) ⏳
@@ -21,6 +22,10 @@ Date Tracker is a simple web app that helps you find out how much time is left b
 </p>
 
 ## How to Use It 🛠️
+
+### Installation
+
+This project requires no installation. It's a simple HTML, CSS, and JavaScript application that can be opened directly in a web browser.
 
 ### Setting Dates 📅
 1. Enter your **start date** and **end date** using the date pickers.
